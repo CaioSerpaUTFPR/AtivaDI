@@ -5,7 +5,7 @@
  */
 package service;
 
-import ativadi.model.Turma;
+import ativadi.model.TurmaPrototype;
 import ativadi.model.TurmaEscolaridade;
 
 /**
@@ -15,8 +15,9 @@ import ativadi.model.TurmaEscolaridade;
 public class TurmaEscolaridadeFactory implements TurmaFactory {
 
     @Override
-    public Turma criarTurma() {
-       return new TurmaEscolaridade();
+    public TurmaPrototype criarTurma() {
+        TurmaEscolaridade turma = new TurmaEscolaridade();
+        return turma.clone();
     }
     
 }

@@ -5,7 +5,7 @@
  */
 package service;
 
-import ativadi.model.Turma;
+import ativadi.model.TurmaPrototype;
 import ativadi.model.TurmaPre;
 
 /**
@@ -15,8 +15,9 @@ import ativadi.model.TurmaPre;
 public class TurmaPreFactory implements TurmaFactory {
 
     @Override
-    public Turma criarTurma() {
-        return new TurmaPre();
+    public TurmaPrototype criarTurma() {
+        TurmaPre turma = new TurmaPre();
+        return turma.clone();
     }
     
 }

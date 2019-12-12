@@ -7,7 +7,7 @@ package ativadi.controler;
 
 import Banco.BancoSingleton;
 import ativadi.AtivaDI;
-import ativadi.model.Turma;
+import ativadi.model.TurmaPrototype;
 import ativadi.model.TurmaPre;
 import ativadi.model.TurmaSingleton;
 import java.net.URL;
@@ -32,24 +32,24 @@ import javax.swing.JOptionPane;
  */
 public class TurmaController implements Initializable {
 
-    List<Turma> list = new ArrayList<>();
+    List<TurmaPrototype> list = new ArrayList<>();
     TurmaPre turma = new TurmaPre();
-    ObservableList<Turma> clientes = FXCollections.observableArrayList();
+    ObservableList<TurmaPrototype> clientes = FXCollections.observableArrayList();
     
     @FXML
     private Button btNovaTurma;
     @FXML
-    private TableView<Turma> tableview;
+    private TableView<TurmaPrototype> tableview;
     @FXML
-    private TableColumn<Turma, String> col_codigo;
+    private TableColumn<TurmaPrototype, String> col_codigo;
     @FXML
     private TableColumn<String, String> col_professor;
     @FXML
-    private TableColumn<Turma, String> col_ano;
+    private TableColumn<TurmaPrototype, String> col_ano;
     @FXML
-    private TableColumn<Turma, String> col_semestre;
+    private TableColumn<TurmaPrototype, String> col_semestre;
     @FXML
-    private TableColumn<Turma, String> col_escolaridade;
+    private TableColumn<TurmaPrototype, String> col_escolaridade;
     @FXML
     private Button btAttTabela;
     @FXML

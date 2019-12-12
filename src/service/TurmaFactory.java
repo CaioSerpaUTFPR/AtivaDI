@@ -5,7 +5,7 @@
  */
 package service;
 
-import ativadi.model.Turma;
+import ativadi.model.TurmaPrototype;
 
 /**
  *
@@ -13,5 +13,5 @@ import ativadi.model.Turma;
  */
 public interface TurmaFactory {
     
-    public Turma criarTurma();
+    public TurmaPrototype criarTurma();
 }

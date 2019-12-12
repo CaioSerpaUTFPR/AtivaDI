@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Caio
  */
-public class TurmaEscolaridade extends Turma {
+public class TurmaEscolaridade extends TurmaPrototype {
     private BancoSingleton banco = BancoSingleton.getInstance();
 
     public TurmaEscolaridade(String escolaridade, String observacao, String semestre, int ano, int professorID) {
@@ -25,9 +25,13 @@ public class TurmaEscolaridade extends Turma {
     public TurmaEscolaridade() {
     }
 
+    protected TurmaEscolaridade(TurmaEscolaridade aThis) {
+       
+    }
+
     
     @Override
-    public void criarTurma(Turma turma) {
+    public void criarTurma(TurmaPrototype turma) {
         String sql = "INSERT INTO turma (codigo_turma, escolaridade, semestre, ano, observacao, professorID)"
                 + " VALUES ('"+turma.getCodTurma()+"','ESCOLARIDADE','"+turma.getSemestre()+"','"
                 +turma.getAno()+"','"+turma.getObservacao()+"','"+turma.getProfessorID()+"');";
@@ -36,11 +40,16 @@ public class TurmaEscolaridade extends Turma {
             JOptionPane.showMessageDialog(null, "Turma criada com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no Bd!");
-            Logger.getLogger(Turma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TurmaPrototype.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro!");
-            Logger.getLogger(Turma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TurmaPrototype.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public TurmaPrototype clone() {
+        return new TurmaEscolaridade(this);
     }
     
 }

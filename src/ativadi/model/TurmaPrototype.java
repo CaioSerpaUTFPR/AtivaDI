@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Caio
  */
-public abstract class Turma {
+public abstract class TurmaPrototype {
     private int id;
     private String escolaridade;
     private String observacao;
@@ -29,10 +29,10 @@ public abstract class Turma {
     private String nomeProfessor;
     private BancoSingleton banco = BancoSingleton.getInstance();
 
-    public Turma(){
+    public TurmaPrototype(){
         
     }
-    public Turma(int id, String escolaridade, String observacao, String semestre, int ano, int professorID, String codTurma) {
+    public TurmaPrototype(int id, String escolaridade, String observacao, String semestre, int ano, int professorID, String codTurma) {
         this.id = id;
         this.escolaridade = escolaridade;
         this.observacao = observacao;
@@ -42,7 +42,7 @@ public abstract class Turma {
         this.codTurma = codTurma;
     }
 
-    public Turma(String escolaridade, String observacao, String semestre, int ano, int professorID, String codTurma) {
+    public TurmaPrototype(String escolaridade, String observacao, String semestre, int ano, int professorID, String codTurma) {
         this.escolaridade = escolaridade;
         this.observacao = observacao;
         this.semestre = semestre;
@@ -51,7 +51,7 @@ public abstract class Turma {
         this.codTurma = codTurma;
     }
 
-    public Turma(String escolaridade, String observacao, String semestre, int ano, int professorID) {
+    public TurmaPrototype(String escolaridade, String observacao, String semestre, int ano, int professorID) {
         this.escolaridade = escolaridade;
         this.observacao = observacao;
         this.semestre = semestre;
@@ -59,7 +59,7 @@ public abstract class Turma {
         this.professorID = professorID;
     }
     
-    
+    public abstract TurmaPrototype clone();
     
 
     public int getId() {
@@ -126,11 +126,11 @@ public abstract class Turma {
         this.semestre = semestre;
     }
     
-    public void criarTurma(Turma turma){
+    public void criarTurma(TurmaPrototype turma){
      
     }
-    public List<Turma> getAllClientes(){
-        List<Turma> turmas = new ArrayList<>();
+    public List<TurmaPrototype> getAllClientes(){
+        List<TurmaPrototype> turmas = new ArrayList<>();
         ResultSet response = null;
         String sql = "SELECT t.id, t.codigo_turma, t.escolaridade, t.semestre, t.ano, t.observacao, t.professorID, p.nome\n" +
 "FROM turma t, professor p\n" +
@@ -147,10 +147,10 @@ public abstract class Turma {
             return turmas;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro no Bd!");
-            Logger.getLogger(Turma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TurmaPrototype.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Erro!");
-            Logger.getLogger(Turma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TurmaPrototype.class.getName()).log(Level.SEVERE, null, ex);
         }
         return turmas;  
     }

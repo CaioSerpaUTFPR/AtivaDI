@@ -7,7 +7,7 @@ package ativadi.controler;
 
 import ativadi.AtivaDI;
 import ativadi.model.Professor;
-import ativadi.model.Turma;
+import ativadi.model.TurmaPrototype;
 import ativadi.model.TurmaEscolaridade;
 import ativadi.model.TurmaPre;
 import java.net.URL;
