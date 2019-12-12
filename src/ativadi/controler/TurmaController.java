@@ -8,6 +8,7 @@ package ativadi.controler;
 import Banco.BancoSingleton;
 import ativadi.AtivaDI;
 import ativadi.model.Turma;
+import ativadi.model.TurmaPre;
 import ativadi.model.TurmaSingleton;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import javax.swing.JOptionPane;
 public class TurmaController implements Initializable {
 
     List<Turma> list = new ArrayList<>();
-    Turma turma = new Turma();
+    TurmaPre turma = new TurmaPre();
     ObservableList<Turma> clientes = FXCollections.observableArrayList();
     
     @FXML

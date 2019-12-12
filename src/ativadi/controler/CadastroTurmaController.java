@@ -8,6 +8,8 @@ package ativadi.controler;
 import ativadi.AtivaDI;
 import ativadi.model.Professor;
 import ativadi.model.Turma;
+import ativadi.model.TurmaEscolaridade;
+import ativadi.model.TurmaPre;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -91,34 +93,39 @@ public class CadastroTurmaController implements Initializable {
         else if ("".equals(tfAno.getText())){
             JOptionPane.showMessageDialog(null, "Informe o ano da turma!"); 
         }
-        else{
-            Turma turma = new Turma(
-                    cbEscolaridade.getSelectionModel().getSelectedItem(),
-                    taObservacao.getText(),
-                    cbSemestre.getSelectionModel().getSelectedItem(),
-                    Integer.parseInt(tfAno.getText()), (cbProfessor.getSelectionModel().getSelectedIndex()+1));
+        else{         
             switch(cbEscolaridade.getSelectionModel().getSelectedItem()){
                 case "PRE":
+                    TurmaPre turmaP = new TurmaPre(
+                        cbEscolaridade.getSelectionModel().getSelectedItem(),
+                        taObservacao.getText(),
+                        cbSemestre.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(tfAno.getText()), (cbProfessor.getSelectionModel().getSelectedIndex()+1));
+                    
                     CodTurmaPre cod = new CodTurmaPre();
                     cod.setEscolaridade(cbEscolaridade.getSelectionModel().getSelectedItem());
                     cod.setAno(tfAno.getText());
                     cod.setSemestre(cbSemestre.getSelectionModel().getSelectedItem());
                     cod.setNumTurma("1");
-                    turma.setCodTurma(cod.iniciar());
-                    turma.criarTurma(turma);
+                    turmaP.setCodTurma(cod.iniciar());
+                    turmaP.criarTurma(turmaP);
                     AtivaDI.mudaTela("turmas");
                     break;
                 case "ESCOLARIDADE" :
+                    TurmaEscolaridade turmaE = new TurmaEscolaridade(
+                        cbEscolaridade.getSelectionModel().getSelectedItem(),
+                        taObservacao.getText(),
+                        cbSemestre.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(tfAno.getText()), (cbProfessor.getSelectionModel().getSelectedIndex()+1));
+                    
                     CodTurmaEscolaridade codE = new CodTurmaEscolaridade();
                     codE.setEscolaridade(cbEscolaridade.getSelectionModel().getSelectedItem());
                     codE.setAno(tfAno.getText());
                     codE.setSemestre(cbSemestre.getSelectionModel().getSelectedItem());
                     codE.setNumTurma("1");
-                    turma.setCodTurma(codE.iniciar());
-                    turma.criarTurma(turma);
-                    AtivaDI.mudaTela("turmas");
-                    //Consolidate Duplicate Conditional Fragments
-                    //OLHAR SLIDE REFATORAÇÃO
+                    turmaE.setCodTurma(codE.iniciar());
+                    turmaE.criarTurma(turmaE);
+                    AtivaDI.mudaTela("turmas");                    
                     break;
             }
         }

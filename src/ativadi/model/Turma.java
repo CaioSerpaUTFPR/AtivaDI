@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Caio
  */
-public class Turma {
+public abstract class Turma {
     private int id;
     private String escolaridade;
     private String observacao;
@@ -58,6 +58,7 @@ public class Turma {
         this.ano = ano;
         this.professorID = professorID;
     }
+    
     
     
 
@@ -126,19 +127,7 @@ public class Turma {
     }
     
     public void criarTurma(Turma turma){
-        String sql = "INSERT INTO turma (codigo_turma, escolaridade, semestre, ano, observacao, professorID)"
-                + " VALUES ('"+turma.getCodTurma()+"','"+turma.getEscolaridade()+"','"+turma.getSemestre()+"','"
-                +turma.getAno()+"','"+turma.getObservacao()+"','"+turma.getProfessorID()+"');";
-        try {
-            banco.executarSQL(sql);
-            JOptionPane.showMessageDialog(null, "Turma criada com sucesso!");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro no Bd!");
-            Logger.getLogger(Turma.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Erro!");
-            Logger.getLogger(Turma.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     
     }
     public List<Turma> getAllClientes(){
         List<Turma> turmas = new ArrayList<>();
@@ -149,7 +138,7 @@ public class Turma {
         try {
             response = banco.executarSQLRetorno(sql);
             while(response.next()){
-                Turma turma = new Turma(response.getInt("id"), response.getString("escolaridade"), 
+                TurmaPre turma = new TurmaPre(response.getInt("id"), response.getString("escolaridade"), 
                         response.getString("observacao"), response.getString("semestre"), 
                         response.getInt("ano"), response.getInt("professorID"), response.getString("codigo_turma"));
                 turma.setNomeProfessor(response.getString("nome"));
