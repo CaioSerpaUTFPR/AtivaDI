@@ -9,7 +9,7 @@ package service;
  *
  * @author Caio
  */
-public abstract class CodTurma {
+public abstract class CodTurmaTemplate {
    
     
     public final String iniciar() {

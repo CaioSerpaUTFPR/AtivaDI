@@ -8,6 +8,7 @@ package ativadi.controler;
 import Banco.BancoSingleton;
 import ativadi.AtivaDI;
 import ativadi.model.Turma;
+import ativadi.model.TurmaSingleton;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -47,6 +49,10 @@ public class TurmaController implements Initializable {
     private TableColumn<Turma, String> col_semestre;
     @FXML
     private TableColumn<Turma, String> col_escolaridade;
+    @FXML
+    private Button btAttTabela;
+    @FXML
+    private Button btEditarTurma;
 
     /**
      * Initializes the controller class.
@@ -72,6 +78,25 @@ public class TurmaController implements Initializable {
     @FXML
     private void cadastrarTurma(ActionEvent event) {
         AtivaDI.mudaTela("criarTurma");   
+    }
+
+    @FXML
+    private void atualizarTabela(ActionEvent event) {
+        list.clear();
+        list = turma.getAllClientes();
+        tableview.setItems(FXCollections.observableArrayList(list));
+    }
+
+    @FXML
+    private void editarTurma(ActionEvent event) {
+        if(tableview.getSelectionModel().getSelectedItem() == null){
+            JOptionPane.showMessageDialog(null, "Selecione uma turma antes de continuar!");
+        }
+        else{
+            TurmaSingleton.getInstance().setId(tableview.getSelectionModel().getSelectedItem().getId());
+            //DadosCompletos.getInstance().setNomeCliente(tableview.getSelectionModel().getSelectedItem().getNomeCliente());
+            AtivaDI.mudaTela("editarTurma");
+        }
     }
     
 }

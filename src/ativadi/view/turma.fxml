@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="758.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="ativadi.controler.TurmaController">
+<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="758.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ativadi.controler.TurmaController">
     <stylesheets>
         <URL value="@turma.css" />
     </stylesheets>
@@ -21,5 +21,7 @@
             <TableColumn fx:id="col_escolaridade" prefWidth="174.0" text="Escolaridade" />
         </columns>
       </TableView>
+      <Button fx:id="btAttTabela" layoutX="24.0" layoutY="54.0" mnemonicParsing="false" onAction="#atualizarTabela" text="Atualizar Tabela" />
+      <Button fx:id="btEditarTurma" layoutX="553.0" layoutY="54.0" mnemonicParsing="false" onAction="#editarTurma" text="Editar Turma" />
    </children>
 </AnchorPane>

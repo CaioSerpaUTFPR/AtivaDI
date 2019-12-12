@@ -9,7 +9,7 @@ package service;
  *
  * @author Caio
  */
-public class CodTurmaEscolaridade extends CodTurma{
+public class CodTurmaEscolaridade extends CodTurmaTemplate{
     private String escolaridade;
     private String semestre;
     private String ano;

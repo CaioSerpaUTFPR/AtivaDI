@@ -26,19 +26,24 @@ public class AtivaDI extends Application {
     
     private static Scene turmasTela;
     private static Scene criarTurmaTela;
+    private static Scene editarTurmaTela;    
     @Override
     public void start(Stage primaryStage) throws IOException {
         
         stage = primaryStage;
         primaryStage.setTitle("TURMAS");
         
-        //TELA ABERTURA
+        //TELA TURMAS
         Parent abertura = FXMLLoader.load(getClass().getResource("view/turma.fxml"));
         turmasTela = new Scene(abertura,758,564);
         
-        //TELA ABERTURA
+        //TELA CRIA TURMAS
         Parent cadastroTurma = FXMLLoader.load(getClass().getResource("view/cadastroTurma.fxml"));
         criarTurmaTela = new Scene(cadastroTurma,758,564);
+        
+        //TELA EDITA TURMAS
+        Parent editarTurma = FXMLLoader.load(getClass().getResource("view/editarTuma.fxml"));
+        editarTurmaTela = new Scene(editarTurma,758,564);
         
         primaryStage.setScene(turmasTela);
         primaryStage.show();
@@ -52,6 +57,9 @@ public class AtivaDI extends Application {
                 break;
             case "turmas":
                 stage.setScene(turmasTela);
+                break;
+            case "editarTurma":
+                stage.setScene(editarTurmaTela);
                 break;
         }
     }
